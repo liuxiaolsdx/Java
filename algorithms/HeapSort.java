@@ -77,7 +77,7 @@ public class HeapSort {
 
 	/**
 	 * 将A[0...n]转换成最大堆，子数组A[(n-1)/2+1..。n]为数组的叶结点
-	 * 
+	 * 自底向上
 	 * @param A
 	 */
 	public void buidMaxHeap(int[] A) {
