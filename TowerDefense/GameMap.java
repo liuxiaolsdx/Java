@@ -15,7 +15,8 @@ public class GameMap {
 	}
 
 	/**
-	 * initial the map with wall 初始化地图，围墙为'*',可建造地为'-'
+	 * initial the map with wall 
+	 * 初始化地图，围墙为'*',可建造地为'-'
 	 */
 	public void initialMap() {
 		map = new char[line + 2][row + 2];
@@ -63,8 +64,9 @@ public class GameMap {
 	}
 
 	/**
-	 * judge whether has access of the map implement of BFS time
-	 * complexity:O(n^2) 此方法用来判断从入口到出口有通路，用队列和广度实现
+	 * judge whether has access of the map implement of BFS 
+	 * time complexity:O(n^2) 
+	 * 此方法用来判断从入口到出口有通路，用队列和广度实现
 	 */
 	public boolean isPathAccess() {
 		if (line < 2 || row < 2)

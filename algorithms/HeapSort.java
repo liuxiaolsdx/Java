@@ -24,9 +24,9 @@ public class HeapSort {
 	 */
 
 	/**
-	 * 1,MAX-HEAPIFY过程：其时间复杂度为O(lgn),它是维护最大堆性质的关键。
-	 * 2.BULD-MAX-HEAP过程：具有线性时间浮渣度，功能是从无序的输入数组中构造一个最大堆。
-	 * 3.HEAPSORT 过程：其时间复杂度为O（nlgn),功能是对一个数组进行原址排序。
+	 * 1. MAX-HEAPIFY过程：其时间复杂度为O(lgn),它是维护最大堆性质的关键。
+	 * 2. BULD-MAX-HEAP过程：具有线性时间复杂度，功能是从无序的输入数组中构造一个最大堆。
+	 * 3. HEAPSORT 过程：其时间复杂度为O（nlgn),功能是对一个数组进行原址排序。
 	 */
 	
 	public int parent(int i) {
