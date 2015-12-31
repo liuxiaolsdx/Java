@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * Created by Sean on 15/12/29.
  */
@@ -18,7 +20,7 @@ public class SinglyLinked<T> {
     }
 
     int size = 0;
-    private Node<T> head, tail;
+    transient Node<T> head, tail;
 
     //构造一个空单链表
     public SinglyLinked() {
@@ -48,7 +50,7 @@ public class SinglyLinked<T> {
 
     //为单链表添加头结点
     public void addHead(T item) {
-        head = new Node<T>(item);
+        head = new Node<>(item);
         if (null == tail) {
             tail = head;
             size += 1;
@@ -69,7 +71,7 @@ public class SinglyLinked<T> {
 
     //在指定位置插入结点
     public void insert(int index, T item) {
-        Node<T> newNode = new Node<T>(item);
+        Node<T> newNode = new Node<>(item);
         Node<T> current = this.search(index);
         newNode.next = current.next;
         current.next = newNode;
@@ -121,7 +123,7 @@ public class SinglyLinked<T> {
         return null;
     }
 
-    //打印单链表
+    //正向打印单链表
     public void printSinglyLinked() {
         if (isEmpty()) {
             System.out.println("singly linked list size: 0");
@@ -130,6 +132,35 @@ public class SinglyLinked<T> {
             for (int i = 0; i < size; i++) {
                 System.out.println("data:" + search(i + 1).data);
             }
+        }
+    }
+
+    //反向打印单链表,栈数据结构实现
+    public void printListReversingly_Iterativly(){
+        if (isEmpty()) {
+            System.out.println("singly linked list size: 0");
+        } else {
+            Node<T> current = head;
+            Stack<Node<T>> nodes = new Stack<>();
+            while (current != null){
+                nodes.push(current);
+                current = current.next;
+            }
+            System.out.println("从尾到头反向打印单链表:");
+            while (!nodes.isEmpty()){
+                current = nodes.pop();
+                System.out.println("data:" + current.data);
+            }
+        }
+    }
+
+    //反向打印单链表,递归实现
+    public void printListReversingly_Recursively(Node<T> head){
+        if (!isEmpty()) {
+            if (null == head)
+                return;
+            printListReversingly_Recursively(head.next);
+            System.out.println("data:" + head.data);
         }
     }
 }
