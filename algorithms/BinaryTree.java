@@ -1,3 +1,5 @@
+import com.sun.istack.internal.NotNull;
+
 /**
  * BinaryTree
  * Created by Sean on 16/1/1.
@@ -8,10 +10,11 @@ public class BinaryTree {
 
     /**
      * Build a binary search tree.
-     * @param key Node.key
+     *
+     * @param key   Node.key
      * @param value Node.value
      */
-    public void addNode (int key, String value) {
+    public void addNode(int key, String value) {
         //create a new Node and initialize it
         Node newNode = new Node(key, value);
 
@@ -24,21 +27,26 @@ public class BinaryTree {
             when we traverse the tree
             */
             Node focusNode = root;
+
             //Future parent for our new Node
             Node parent;
             while (true) {
+
                 //root is the first Node to traverse
                 parent = focusNode;
+
                 /*
                 Check if the new node should go to the left side
                 of the parent node
                  */
                 if (key < focusNode.key) {
+
                     //Switch focus to the left child
                     focusNode = focusNode.leftChild;
+
                     //If the Node is leaf node (no children)
                     if (null == focusNode) {
-                        parent.leftChild =newNode;
+                        parent.leftChild = newNode;
                         return;//the Node has been added
                     }
                 } else {
@@ -55,6 +63,7 @@ public class BinaryTree {
 
     /**
      * preorder tree walk
+     *
      * @param focusNode root of the tree
      */
     public void preorderTreeWalk(Node focusNode) {
@@ -73,6 +82,7 @@ public class BinaryTree {
             inorderTreeWalk(focusNode.rightChild);
         }
     }
+
     public void postorederTreewalk(Node focusNode) {
         if (focusNode != null) {
             postorederTreewalk(focusNode.leftChild);
@@ -82,7 +92,7 @@ public class BinaryTree {
         }
     }
 
-    public Node findNode (int key) {
+    public Node findNode(int key) {
         //start at the top of the tree
         Node focusNode = root;
 
@@ -93,6 +103,7 @@ public class BinaryTree {
             } else {
                 focusNode = focusNode.rightChild;
             }
+
             //the node wasn't found
             if (null == focusNode) {
                 return null;
@@ -101,7 +112,72 @@ public class BinaryTree {
         return focusNode;
     }
 
-     class Node {
+    /**
+     * Input pre and in order traverse result, then reconstruct it.
+     */
+    @NotNull
+    public void reconstruct(int[] preorder, int[] inorder) {
+        if (null == preorder || null == inorder) {
+            throw new NullPointerException("Arguments is null!");
+        }
+
+        if (preorder.length != inorder.length) {
+            throw new RuntimeException("Length of arguments aren't accordance.");
+        }
+
+        root = reconstructCore(preorder, inorder);
+    }
+
+    private Node reconstructCore(int[] pre, int[] in) {
+
+        if (pre.length == 0 || in.length == 0) {
+            return null;
+        }
+
+        Node root = new Node(pre[0]);
+
+        int rootKey = 0;//Define a variable to record the root Node
+        int inLength = in.length;
+
+        //Find the root at the inorder array
+        for (; rootKey < inLength; rootKey++) {
+            if (in[rootKey] == pre[0]) {
+                break;
+            }
+        }
+
+        //Check two array is matched
+        if (rootKey == inLength) {
+            throw new IllegalArgumentException("The two array are not matched.");
+        }
+
+        //Construct the left tree
+        if (rootKey > 0) {
+            //preoreder array decreased per recursion
+            int[] leftPre = new int[rootKey];
+            int[] leftIn = new int[rootKey];
+            for (int i = 0; i < rootKey; i++) {
+                leftPre[i] = pre[i + 1];
+                leftIn[i] = in[i];
+            }
+
+            root.leftChild = reconstructCore(leftPre, leftIn);
+        }
+        //Construct the right tree
+        if (rootKey < in.length - 1) {
+            int[] rightPre = new int[in.length - rootKey - 1];
+            int[] rightIn = new int[in.length - rootKey - 1];
+            for (int i = 0; i < in.length - rootKey - 1; i++) {
+                rightPre[i] = pre[i + rootKey + 1];
+                rightIn[i] = in[i + rootKey + 1];
+            }
+            root.rightChild = reconstructCore(rightPre, rightIn);
+        }
+        return root;
+    }
+
+
+    class Node {
 
         int key;
         String value;
@@ -109,14 +185,18 @@ public class BinaryTree {
         Node leftChild;
         Node rightChild;
 
-        Node (int key, String value) {
+        Node(int key) {
+            this(key, null);
+        }
+
+        Node(int key, String value) {
             this.key = key;
             this.value = value;
         }
 
-         public String toString() {
-             return value + " has the key " + key;
-         }
+        public String toString() {
+            return value + " has the key " + key;
+        }
     }
 
     /*
@@ -144,5 +224,21 @@ public class BinaryTree {
 
         System.out.println("\nFind a node whit the key 10");
         System.out.println(tree.findNode(10));
+
+        int[] preorder = {1, 2, 4, 7, 3, 5, 6, 8};
+        int[] inorder = {4, 7, 2, 1, 5, 3, 8, 6};
+        int[] wrong = {4, 7, 2, 1, 5, 3, 8, 9};//6 -> 9
+        BinaryTree tree2 = new BinaryTree();
+        tree2.reconstruct(preorder, inorder);
+        tree2.postorederTreewalk(tree2.root);//{7, 4, 2, 5, 8, 6, 3, 1}
+
+        BinaryTree tree3 = new BinaryTree();
+        try {
+            tree2.reconstruct(preorder, wrong);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Test unmatched arguments success!");
+        }
+        tree2.postorederTreewalk(tree3.root);
+
     }
 }
