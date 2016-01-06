@@ -125,53 +125,62 @@ public class BinaryTree {
             throw new RuntimeException("Length of arguments aren't accordance.");
         }
 
-        root = reconstructCore(preorder, inorder);
+        root = reconstructCore(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
     }
 
-    private Node reconstructCore(int[] pre, int[] in) {
+    /**
+     * @param preorder      preorder array
+     * @param startPreorder preorder array left index
+     * @param endPreorder   preorder array right index
+     * @param inorder       inorder array
+     * @param startInorder  inorder array left index
+     * @param endInorder    inorder array right index
+     * @return the root node
+     */
+    private Node reconstructCore(int[] preorder, int startPreorder, int endPreorder,
+                                 int[] inorder, int startInorder, int endInorder) {
 
-        if (pre.length == 0 || in.length == 0) {
-            return null;
+        Node root = new Node(preorder[startPreorder]);
+        root.leftChild = root.rightChild = null;
+
+        if (startPreorder == endPreorder) {
+            if (startInorder == endInorder && preorder[startPreorder] == inorder[startInorder]) {
+                return root;
+            } else {
+                throw new IllegalArgumentException("Invalid input!");
+            }
         }
 
-        Node root = new Node(pre[0]);
+        int rootIndex = startInorder;//Define a variable to record the root Node
 
-        int rootKey = 0;//Define a variable to record the root Node
-        int inLength = in.length;
-
-        //Find the root at the inorder array
-        for (; rootKey < inLength; rootKey++) {
-            if (in[rootKey] == pre[0]) {
-                break;
-            }
+        //Find the root(the root value came from preorder array) at the inorder array
+        //then the left part is the left children tree
+        //and the right part is the right children tree
+        while (rootIndex <= endInorder && inorder[rootIndex] != preorder[startPreorder]) {
+            ++rootIndex;
         }
 
         //Check two array is matched
-        if (rootKey == inLength) {
+        if (rootIndex == endInorder+1) {
             throw new IllegalArgumentException("The two array are not matched.");
         }
 
-        //Construct the left tree
-        if (rootKey > 0) {
-            //preoreder array decreased per recursion
-            int[] leftPre = new int[rootKey];
-            int[] leftIn = new int[rootKey];
-            for (int i = 0; i < rootKey; i++) {
-                leftPre[i] = pre[i + 1];
-                leftIn[i] = in[i];
-            }
+        int leftTreeLength = rootIndex - startInorder;
+        int leftPreoderEnd = startPreorder + leftTreeLength;
 
-            root.leftChild = reconstructCore(leftPre, leftIn);
+        //Construct the left tree
+        if (leftTreeLength > 0) {
+            //preoreder array decreased per recursion
+
+            root.leftChild = reconstructCore(
+                    preorder, startPreorder + 1, leftPreoderEnd,
+                    inorder, startInorder, rootIndex - 1);
         }
         //Construct the right tree
-        if (rootKey < in.length - 1) {
-            int[] rightPre = new int[in.length - rootKey - 1];
-            int[] rightIn = new int[in.length - rootKey - 1];
-            for (int i = 0; i < in.length - rootKey - 1; i++) {
-                rightPre[i] = pre[i + rootKey + 1];
-                rightIn[i] = in[i + rootKey + 1];
-            }
-            root.rightChild = reconstructCore(rightPre, rightIn);
+        if (leftTreeLength < endPreorder - startPreorder) {
+            root.rightChild = reconstructCore(
+                    preorder, leftPreoderEnd + 1, endPreorder,
+                    inorder, rootIndex + 1, endInorder);
         }
         return root;
     }

@@ -52,7 +52,7 @@ public class HeapSort {
 	 */
 	public void maxHeapify(int[] A, int i, int heapSize) {
 		int l = this.left(i);// 左孩子下标
-		int r = this.right(i);// 又孩子下标
+		int r = this.right(i);// 右孩子下标
 		int largest = 0;// 最大结点的下标
 
 		if (l < heapSize && A[l] > A[i]) {
