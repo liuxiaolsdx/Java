@@ -37,9 +37,12 @@ public class RotationArray {
             throw new IllegalArgumentException("Invalid Input.");
         }
 
+        if (left == right) {
+            return arr[left];//the array only one element
+        }
         int middle = left;
 
-        while (arr[left] > arr[right]) {
+        while (arr[left] >= arr[right]) {
             if (right - left == 1) {
                 middle = right;
                 break;

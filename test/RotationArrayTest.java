@@ -20,7 +20,7 @@ public class RotationArrayTest {
         Assert.assertEquals(1, RotationArray.min(arr3, 0, arr3.length - 1));
         Assert.assertEquals(1, RotationArray.min(arr4, 0, arr4.length - 1));
         Assert.assertEquals(1, RotationArray.min(arr5, 0, arr5.length - 1));
-        Assert.assertEquals(1, RotationArray.min(arr5, 0, arr5.length - 1));
+        Assert.assertEquals(1, RotationArray.min(arr6, 0, arr6.length - 1));
     }
 
     @Test
@@ -30,6 +30,7 @@ public class RotationArrayTest {
         Assert.assertEquals(1, RotationArray.min2(arr3, 0, arr3.length - 1));
         Assert.assertEquals(1, RotationArray.min2(arr4, 0, arr4.length - 1));
         Assert.assertEquals(1, RotationArray.min2(arr5, 0, arr5.length - 1));
+        Assert.assertEquals(1, RotationArray.min2(arr6, 0, arr6.length - 1));
     }
 
 }
