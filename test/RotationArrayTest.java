@@ -12,6 +12,8 @@ public class RotationArrayTest {
     private int[] arr4 = {1, 2, 3, 3, 4, 4, 5, 6, 7};
     private int[] arr5 = {1};
     private int[] arr6 = {3, 5, 6, 6, 6, 7, 8, 1, 2, 3};
+    private int[] arr7 = {1, 0, 1, 1, 1};
+    private int[] arr8 = {1, 1, 1, 0, 1};
 
     @Test
     public void testMin() {
@@ -21,6 +23,8 @@ public class RotationArrayTest {
         Assert.assertEquals(1, RotationArray.min(arr4, 0, arr4.length - 1));
         Assert.assertEquals(1, RotationArray.min(arr5, 0, arr5.length - 1));
         Assert.assertEquals(1, RotationArray.min(arr6, 0, arr6.length - 1));
+        Assert.assertEquals(0, RotationArray.min(arr7, 0, arr7.length - 1));
+        Assert.assertEquals(0, RotationArray.min(arr8, 0, arr8.length - 1));
     }
 
     @Test
@@ -31,6 +35,8 @@ public class RotationArrayTest {
         Assert.assertEquals(1, RotationArray.min2(arr4, 0, arr4.length - 1));
         Assert.assertEquals(1, RotationArray.min2(arr5, 0, arr5.length - 1));
         Assert.assertEquals(1, RotationArray.min2(arr6, 0, arr6.length - 1));
+        Assert.assertEquals(0, RotationArray.min2(arr7, 0, arr7.length - 1));
+        Assert.assertEquals(0, RotationArray.min2(arr8, 0, arr8.length - 1));
     }
 
 }

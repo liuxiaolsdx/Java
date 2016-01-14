@@ -47,10 +47,18 @@ public class RotationArray {
                 middle = right;
                 break;
             }
+
             middle = left + (right - left) / 2;
+
+            //if the three number is equal
+            //refer to test case arr7 and arr8 in class RotationArrayTest
+            if (arr[left] == arr[right] && arr[left] == arr[middle]) {
+                return min(arr, left, right);
+            }
+
             if (arr[middle] >= arr[left]) {
                 left = middle;
-            } else if (arr[middle] <= arr[right]){
+            } else if (arr[middle] <= arr[right]) {
                 right = middle;
             }
         }
