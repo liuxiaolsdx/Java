@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.liuxiao</groupId>
+    <artifactId>FwBlog</artifactId>
+    <name>FwBlog</name>
+    <url>http://liuxiao.info</url>
+    <version>1.0-SNAPSHOT</version>
+
+    <build>
+        <finalName>FwBlog</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <!-- 配置jar包里MANIFEST信息 -->
+                        <manifest>
+                            <mainClass>com.liuxiao.blog.Server</mainClass>
+                            <!-- 增加该配置可减少在运行时配置的依赖 -->
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib</classpathPrefix>
+                        </manifest>
+                    </archive>
+                    <descriptor>assembly.xml</descriptor>
+                    <finalName>FwBlog</finalName>
+                    <outputDirectory>target</outputDirectory>
+                    <workDirectory>target</workDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.hunantv.mpp.fw</groupId>
+            <artifactId>mpp-fw</artifactId>
+            <version>0.1.7</version>
+        </dependency>
+    </dependencies>
+</project>
