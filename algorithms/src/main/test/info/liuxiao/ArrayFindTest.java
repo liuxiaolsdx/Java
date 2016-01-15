@@ -1,9 +1,12 @@
+package info.liuxiao;
+
 /**
  * Created by Sean on 15/12/26.
  */
 
 import static org.junit.Assert.*;
 
+import info.liuxiao.ArrayFind;
 import org.junit.Test;
 
 public class ArrayFindTest {

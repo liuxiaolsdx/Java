@@ -1,3 +1,5 @@
+package info.liuxiao;
+
 /**
  * Rotation Array
  * Created by Sean on 16/1/13.

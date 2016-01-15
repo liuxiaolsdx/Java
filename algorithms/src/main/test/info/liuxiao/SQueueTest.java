@@ -1,10 +1,13 @@
+package info.liuxiao;
+
+import info.liuxiao.SQueue;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * SQueueTest
+ * info.liuxiao.SQueueTest
  * Created by Sean on 16/1/3.
  */
 public class SQueueTest {

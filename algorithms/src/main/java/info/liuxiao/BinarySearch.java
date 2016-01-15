@@ -1,3 +1,5 @@
+package info.liuxiao;
+
 import com.sun.istack.internal.NotNull;
 
 /**

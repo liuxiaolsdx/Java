@@ -1,3 +1,5 @@
+package info.liuxiao;
+
 import java.util.LinkedList;
 import java.util.Queue;
 

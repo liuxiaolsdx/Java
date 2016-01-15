@@ -1,7 +1,9 @@
+package info.liuxiao;
 /**
  * Created by Sean on 15/12/29.
  */
 
+import info.liuxiao.SinglyLinked;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

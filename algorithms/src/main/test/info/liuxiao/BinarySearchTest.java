@@ -1,9 +1,12 @@
+package info.liuxiao;
+
+import info.liuxiao.BinarySearch;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * BinarySearchTest
+ * info.liuxiao.BinarySearchTest
  * Created by Sean on 16/1/4.
  */
 public class BinarySearchTest {

@@ -1,8 +1,11 @@
+package info.liuxiao;
+
+import info.liuxiao.RotationArray;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * RotationArrayTest
+ * info.liuxiao.RotationArrayTest
  * Created by Sean on 16/1/13.
  */
 public class RotationArrayTest {
