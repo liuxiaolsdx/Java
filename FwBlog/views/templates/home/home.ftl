@@ -131,4 +131,4 @@
 
 </@override>
 
-<@extends name = "base.ftl" />
+<@extends name = "templates/layout/base.ftl" />

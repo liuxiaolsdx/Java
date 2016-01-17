@@ -12,7 +12,7 @@ public class HomeController extends Controller {
     protected static FwLogger logger = new FwLogger(HomeController.class);
 
     public View index() {
-        return this.renderHtml("/home.ftl");
+        return this.renderHtml("templates/home/home.ftl");
     }
 
 
