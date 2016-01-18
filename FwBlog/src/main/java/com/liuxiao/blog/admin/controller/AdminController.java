@@ -3,6 +3,7 @@ package com.liuxiao.blog.admin.controller;
 import com.hunantv.fw.Controller;
 import com.hunantv.fw.db.DB;
 import com.hunantv.fw.utils.FwLogger;
+import com.hunantv.fw.utils.StringUtil;
 import com.hunantv.fw.view.View;
 
 import java.util.Map;
@@ -23,7 +24,7 @@ public class AdminController extends Controller{
 
         DB db = new DB();
         String account = this.getStrParam("account");
-        String password = this.getStrParam("password");
+        String password = StringUtil.toMd5Str(this.getStrParam("password"));
         Map<String, Object> record = db.get("SELECT * FROM users WHERE account = ? AND password = ?", account, password);
         if (null == record) {
             return this.redirect("admin/error");
