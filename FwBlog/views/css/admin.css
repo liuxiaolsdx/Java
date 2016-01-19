@@ -1,0 +1,45 @@
+body {
+	-webkit-font-smoothing: antialiased;
+	color: #434343;
+}
+
+.main-container{
+	padding-top: 60px;
+}
+
+form .item-row{
+	margin-top: 10px;
+}
+
+td.operations, th.operations{
+  text-align: center;
+  width: 120px;
+}
+td.operations a{
+  margin-left: 5px;
+}
+
+.post-form textarea{
+  height: 350px;
+}
+
+
+.post-form #content-editor{
+  height: 430px;
+  width: 100%;
+}
+
+
+.settings-form tbody td.setting-label{
+	width: 250px;
+	text-align: right;
+	padding-right: 20px;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.profile .row .col-sm-2{
+		font-weight: bold;
+		text-align: right;
+		padding-right: 30px;
+}
