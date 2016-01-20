@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Sean">
-    <link rel="icon" href="../../../images/Skype.ico">
+<@override name = "title">Admin Homepage</@override>
 
-    <title>登录微博</title>
+<@override name = "link">
+<link href="http://v3.bootcss.com/examples/signin/signin.css" rel="stylesheet">
+</@override>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="http://v3.bootcss.com/examples/signin/signin.css" rel="stylesheet">
-
-</head>
-<body>
+<@override name = "content">
 <div class="container">
 
-    <form action="admin/login" method="post" class="form-signin">
+    <form action="/admin/access" method="post" class="form-signin">
         <h2 class="form-signin-heading">请登录</h2>
 
         <label for="inputUserName" class="sr-only">用户名</label>
@@ -34,5 +22,6 @@
 
     </form>
 </div>
-</body>
-</html>
+</@override>
+
+<@extends name = "templates/admin/layout/base.ftl" />

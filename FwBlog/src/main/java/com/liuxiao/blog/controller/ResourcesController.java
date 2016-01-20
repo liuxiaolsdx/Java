@@ -16,7 +16,8 @@ public class ResourcesController extends Controller {
     protected static FwLogger logger = new FwLogger(HomeController.class);
 
     public View load() {
-        try (InputStream is = new FileInputStream(new SysConf().getSysPath()+ "views/css/bootstrap.min.css")){
+        this.getResponse().setContentType("text/css");
+        try (InputStream is = new FileInputStream(new SysConf().getSysPath()+ "views/css/blog.css")){
             BytesView view = BytesView.fromInputStream(is);
             return view;
         } catch (Exception e) {

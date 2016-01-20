@@ -1,7 +1,9 @@
 <@extends name = "templates/admin/layout/base.ftl" />
 
-<@override name = "tittle">Admin Homepage</@override>
+<@override name = "title">Admin Homepage</@override>
 
 <@override name = "content">
-    <span>Admin Homepage</span>
+    <div class="container main-container">
+        <span>Admin Homepage</span>
+    </div>
 </@override>

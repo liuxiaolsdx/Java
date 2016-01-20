@@ -12,23 +12,27 @@ import java.util.Map;
  * AdminController
  * Created by Sean on 16/1/17.
  */
-public class AdminController extends Controller{
+public class AdminController extends Controller {
     protected static FwLogger logger = new FwLogger(AdminController.class);
 
-    public View admin(){
+    public View login() {
         return this.renderHtml("templates/admin/home/login.ftl");
     }
 
-    public View login(){
+    public View access() {
         //admin service
 
-        DB db = new DB();
+//        DB db = new DB();
         String account = this.getStrParam("account");
+        System.out.println(account);
         String password = StringUtil.toMd5Str(this.getStrParam("password"));
-        Map<String, Object> record = db.get("SELECT * FROM users WHERE account = ? AND password = ?", account, password);
-        if (null == record) {
-            return this.redirect("admin/error");
-        }
+//        Map<String, Object> record = db.get("SELECT * FROM users WHERE account = ? AND password = ?", account, password);
+//        if (null == record) {
+//            return this.redirect("/error");
+//        }
+       return this.redirect("/admin/home");
+    }
+    public View home() {
         return this.renderHtml("templates/admin/home/home.ftl");
     }
 

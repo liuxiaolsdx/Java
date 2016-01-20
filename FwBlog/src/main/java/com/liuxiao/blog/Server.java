@@ -15,9 +15,10 @@ public class Server {
     public static Routes initRoutes() {
         Routes routes = new Routes(
                 Route.get("/", HomeController.class, "index"),
-                Route.get("/css/bootstrap.min.css", ResourcesController.class, "load"),
-                Route.get("/admin", AdminController.class, "admin"),
-                Route.get("/admin/login", AdminController.class, "login")
+                Route.get("/css/blog.css", ResourcesController.class, "load"),
+                Route.get("/admin/login", AdminController.class, "login"),
+                Route.post("/admin/access", AdminController.class, "access"),
+                Route.get("/admin/home", AdminController.class, "home")
         );
         return routes;
     }
