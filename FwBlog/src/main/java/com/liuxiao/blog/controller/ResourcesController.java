@@ -18,11 +18,31 @@ public class ResourcesController extends Controller {
     public View load() {
         this.getResponse().setContentType("text/css");
         try (InputStream is = new FileInputStream(new SysConf().getSysPath()+ "views/css/blog.css")){
-            BytesView view = BytesView.fromInputStream(is);
-            return view;
+            return BytesView.fromInputStream(is);
         } catch (Exception e) {
             throw new RuntimeException("File: bootstrap.min.css not found");
         }
+    }
+
+    public View loadAdminCss() {
+        this.getResponse().setContentType("text/css");
+        try (InputStream is = new FileInputStream(new SysConf().getSysPath()+ "views/css/admin.css")){
+            return BytesView.fromInputStream(is);
+        } catch (Exception e) {
+            throw new RuntimeException("File: admin.css not found");
+        }
+
+    }
+
+    public View loadJs() {
+        String path = this.getRequest().getContextPath();
+        System.out.println(path);
+        try (InputStream is = new FileInputStream(new SysConf().getSysPath()+ "views/css/admin.css")){
+            return BytesView.fromInputStream(is);
+        } catch (Exception e) {
+            throw new RuntimeException("File: admin.css not found");
+        }
+
     }
 
 }

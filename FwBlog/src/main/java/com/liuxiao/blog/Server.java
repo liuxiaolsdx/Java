@@ -18,7 +18,9 @@ public class Server {
                 Route.get("/css/blog.css", ResourcesController.class, "load"),
                 Route.get("/admin/login", AdminController.class, "login"),
                 Route.post("/admin/access", AdminController.class, "access"),
-                Route.get("/admin/home", AdminController.class, "home")
+                Route.get("/admin/home", AdminController.class, "home"),
+                Route.get("/css/admin.css", ResourcesController.class, "loadAdminCss"),
+                Route.get("*.js", ResourcesController.class, "loadJs")
         );
         return routes;
     }
