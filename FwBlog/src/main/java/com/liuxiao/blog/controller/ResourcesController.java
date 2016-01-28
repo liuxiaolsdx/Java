@@ -35,9 +35,10 @@ public class ResourcesController extends Controller {
     }
 
     public View loadJs() {
-        String path = this.getRequest().getContextPath();
+        String path = this.getRequest().getRequestURL().toString();
+        System.out.println("loadjs");
         System.out.println(path);
-        try (InputStream is = new FileInputStream(new SysConf().getSysPath()+ "views/css/admin.css")){
+        try (InputStream is = new FileInputStream(new SysConf().getSysPath()+ "views/bower_components/simditor/lib/simditor.js")){
             return BytesView.fromInputStream(is);
         } catch (Exception e) {
             throw new RuntimeException("File: admin.css not found");

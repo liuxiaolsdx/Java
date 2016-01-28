@@ -65,4 +65,14 @@ public class AdminController extends Controller {
         });
     }
 
+    public View settings() {
+        DB db = new DB();
+        Map<String, Object> settings = db.get("SELECT * FROM users");
+        return this.renderHtml("templates/admin/home/settings.ftl", new HashMap<String, Object>(){
+            {
+                put("settings", settings);
+            }
+        });
+    }
+
 }
