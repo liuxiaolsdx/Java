@@ -23,7 +23,8 @@ public class Server {
                 Route.post("/admin/access", AdminController.class, "access"),
                 Route.get("/admin/home", AdminController.class, "home"),
                 Route.get("/admin/posts", AdminController.class, "show"),
-                Route.get("/admin/posts/new", AdminController.class, "edit"),
+                Route.get("/admin/posts/new", AdminController.class, "_new"),
+                Route.get("/admin/posts/<int:id>", AdminController.class, "update"),
                 Route.get("/admin/settings", AdminController.class, "settings")
 
         );

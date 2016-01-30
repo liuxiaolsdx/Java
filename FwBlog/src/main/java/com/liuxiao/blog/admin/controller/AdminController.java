@@ -7,7 +7,6 @@ import com.hunantv.fw.utils.StringUtil;
 import com.hunantv.fw.view.View;
 import com.liuxiao.blog.entity.User;
 
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +70,20 @@ public class AdminController extends Controller {
         return this.renderHtml("templates/admin/home/settings.ftl", new HashMap<String, Object>(){
             {
                 put("settings", settings);
+            }
+        });
+    }
+
+    public View _new() {
+        return this.renderHtml("templates/admin/posts/edit.ftl");
+    }
+
+    public View update(int id) {
+        DB db = new DB();
+        Map<String, Object> posts = db.get("SELECT * FROM posts WHERE id=?", id);
+        return this.renderHtml("templates/admin/posts/edit.ftl", new HashMap<String, Object>(){
+            {
+                put("posts", posts);
             }
         });
     }
