@@ -10,40 +10,40 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 /**
+ * Static resources controller
  * Created by Sean on 16/1/10.
  */
 public class ResourcesController extends Controller {
     protected static FwLogger logger = new FwLogger(HomeController.class);
 
-    public View load() {
+    public View loadJs(String filename) {
+
+        try (InputStream is = new FileInputStream(new SysConf().getSysPath() + "views/js/" + filename)) {
+            return BytesView.fromInputStream(is);
+        } catch (Exception e) {
+            throw new RuntimeException("File: " + filename + " not found");
+        }
+
+    }
+
+    public View loadCSS(String name) {
         this.getResponse().setContentType("text/css");
-        try (InputStream is = new FileInputStream(new SysConf().getSysPath()+ "views/css/blog.css")){
+        try (InputStream is = new FileInputStream(new SysConf().getSysPath() + "views/css/" + name)) {
             return BytesView.fromInputStream(is);
         } catch (Exception e) {
-            throw new RuntimeException("File: bootstrap.min.css not found");
+            throw new RuntimeException("File: " + name + " not found");
         }
     }
 
-    public View loadAdminCss() {
-        this.getResponse().setContentType("text/css");
-        try (InputStream is = new FileInputStream(new SysConf().getSysPath()+ "views/css/admin.css")){
+    public View loadImg(String filename) {
+
+        try (InputStream is = new FileInputStream(new SysConf().getSysPath() + "views/images/" + filename)) {
             return BytesView.fromInputStream(is);
         } catch (Exception e) {
-            throw new RuntimeException("File: admin.css not found");
+            throw new RuntimeException("File: " + filename + " not found");
         }
 
     }
 
-    public View loadJs() {
-        String path = this.getRequest().getRequestURL().toString();
-        System.out.println("loadjs");
-        System.out.println(path);
-        try (InputStream is = new FileInputStream(new SysConf().getSysPath()+ "views/bower_components/simditor/lib/simditor.js")){
-            return BytesView.fromInputStream(is);
-        } catch (Exception e) {
-            throw new RuntimeException("File: admin.css not found");
-        }
-
-    }
 
 }

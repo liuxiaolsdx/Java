@@ -15,16 +15,17 @@ public class Server {
     public static Routes initRoutes() {
         Routes routes = new Routes(
                 Route.get("/", HomeController.class, "index"),
-                Route.get("/css/blog.css", ResourcesController.class, "load"),
-                Route.get("/css/admin.css", ResourcesController.class, "loadAdminCss"),
+                Route.get("/css/<str:name>", ResourcesController.class, "loadCSS"),
+                Route.get("/js/<str:name>", ResourcesController.class, "loadJs"),
+                Route.get("/images/<str:name>", ResourcesController.class, "loadImg"),
 
                 Route.get("/admin/login", AdminController.class, "login"),
                 Route.post("/admin/access", AdminController.class, "access"),
                 Route.get("/admin/home", AdminController.class, "home"),
                 Route.get("/admin/posts", AdminController.class, "show"),
-                Route.get("/admin/settings", AdminController.class, "settings"),
+                Route.get("/admin/posts/new", AdminController.class, "edit"),
+                Route.get("/admin/settings", AdminController.class, "settings")
 
-                Route.get("^\\S*\\.js", ResourcesController.class, "loadJs")
         );
         return routes;
     }
