@@ -14,6 +14,7 @@ public class Fibonacci {
 
     /**
      * 常见递归解法,由于重复计算结点会造成效率很慢.
+     * 时间复杂度是以n的指数的方式增长.
      * @param n 输入值
      * @return int
      */
@@ -27,6 +28,12 @@ public class Fibonacci {
         return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
+    /**
+     * 将已经得到的数列中间项保存起来.
+     * 递推实现,时间复杂度O(n).
+     * @param n
+     * @return
+     */
     public int fibonacci2(int n) {
         int[] result = {0, 1};
         if (n <= 1)
