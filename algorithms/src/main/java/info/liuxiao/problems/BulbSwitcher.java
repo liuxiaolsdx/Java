@@ -1,4 +1,4 @@
-package info.liuxiao;
+package info.liuxiao.problems;
 
 /**
  * Created by Sean on 15/12/26.

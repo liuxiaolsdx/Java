@@ -1,8 +1,7 @@
-package info.liuxiao;
+package info.liuxiao.problems;
 /**
  * Created by Sean on 15/12/26.
  */
-import info.liuxiao.BulbSwitcher;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
