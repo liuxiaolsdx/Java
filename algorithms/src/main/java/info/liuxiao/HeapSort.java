@@ -47,8 +47,8 @@ public class HeapSort {
 	/**
 	 * 先假设根结点为left(i)和right(i)的二叉树都是最大堆
 	 * 
-	 * @param A
-	 * @param i
+	 * @param A input array
+	 * @param i parent node index
 	 */
 	public void maxHeapify(int[] A, int i, int heapSize) {
 		int l = this.left(i);// 左孩子下标
