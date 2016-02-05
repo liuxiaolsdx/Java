@@ -52,6 +52,25 @@ public class PrintNumber {
         }
     }
 
+    /**
+     * 非递归实现,节省内存空间
+     * @param n
+     */
+    public static void print1ToMaxofNDigits2(int n) {
+        if (n <= 0) {
+            throw new RuntimeException("Invalid input, n must more than 0");
+        }
+        int[] arr = new int[n];
+        while (increment(arr)) {
+            printArray(arr);
+        }
+    }
+
+    private static boolean increment(int[] arr) {
+        //TODO:
+        return false;
+    }
+
     public static void main(String[] args) {
         print1ToMaxofNDigits(2);
     }
