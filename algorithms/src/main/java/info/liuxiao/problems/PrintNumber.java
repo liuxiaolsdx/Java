@@ -67,11 +67,20 @@ public class PrintNumber {
     }
 
     private static boolean increment(int[] arr) {
-        //TODO:
-        return false;
+        int index = arr.length;
+        boolean hasCarry;
+        do {
+            index--;
+            arr[index] += 1;
+            hasCarry = arr[index] % 10 == 0;
+            arr[index] %= 10;
+        } while (hasCarry && index > 0);
+
+        return !(hasCarry && index == 0);//到最大数为false
     }
 
     public static void main(String[] args) {
         print1ToMaxofNDigits(2);
+        print1ToMaxofNDigits2(2);
     }
 }
