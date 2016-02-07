@@ -1,3 +1,3 @@
 # Java
 Some java exercises.
-For more detailes, please see the code comments.
+For more details, please see the comments in code.
