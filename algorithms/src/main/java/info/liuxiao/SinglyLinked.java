@@ -3,26 +3,27 @@ package info.liuxiao;
 import java.util.Stack;
 
 /**
+ * Singly Linked list
  * Created by Sean on 15/12/29.
  */
 public class SinglyLinked<T> {
     //单链表的结点类
-    public class Node<T> {
-        private T data;
-        private Node<T> next;
+    public class Node<E> {
+        private E data;
+        private Node<E> next;
 
-        public Node(T data) {
+        public Node(E data) {
             this(data, null);
         }
 
-        public Node(T data, Node<T> next) {
+        public Node(E data, Node<E> next) {
             this.data = data;
             this.next = next;
         }
     }
 
     int size = 0;
-    transient Node<T> head, tail;
+    transient Node<T> head, tail;//transient 关键字:不需要序列化
 
     //构造一个空单链表
     public SinglyLinked() {
@@ -37,17 +38,18 @@ public class SinglyLinked<T> {
 
     //单链表的大小
     public int size() {
-        if (isEmpty()) {
-            return 0;
-        } else {
-            int count = 1;
-            Node<T> current = head;
-            while (current != tail) {
-                current = current.next;
-                count++;
-            }
-            return count;
-        }
+        //if (isEmpty()) {
+        //    return 0;
+        //} else {
+        //    int count = 1;
+        //    Node<E> current = head;
+        //    while (current != tail) {
+        //        current = current.next;
+        //        count++;
+        //    }
+        //    return count;
+        //}
+        return size;
     }
 
     //为单链表添加头结点
@@ -83,6 +85,10 @@ public class SinglyLinked<T> {
     public void deleteHead() throws NullPointerException {
         head = head.next;
         size -= 1;
+    }
+
+    public void deleteTail() {
+        delete(size);
     }
 
     //删除指定位置的结点
@@ -165,4 +171,31 @@ public class SinglyLinked<T> {
             System.out.println("data:" + head.data);
         }
     }
+
+    /**
+     * 题目: 给定单向链表的头指针和一个结点指针,定义一个函数在O(1)时间删除该结点.
+     */
+    /**
+     * 索引从1开始
+     * Created by Sean on 16/2/8.
+     * @param toBeDelete will be deleted
+     */
+    public void deleteNode(Node<T> toBeDelete) {
+        //如果要删除的结点是尾结点
+        if (toBeDelete.next == null) {
+            deleteTail();
+            return;
+        }
+        //如果单链表中只有一个结点
+        if (size == 1) {
+            head = null;
+            size -= 1;
+            return;
+        }
+        toBeDelete.data = toBeDelete.next.data;
+        toBeDelete.next = toBeDelete.next.next;
+        size -= 1;
+
+    }
+
 }

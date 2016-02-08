@@ -1,9 +1,9 @@
 package info.liuxiao;
 /**
+ * SinglyLinked Test
  * Created by Sean on 15/12/29.
  */
 
-import info.liuxiao.SinglyLinked;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -32,6 +32,29 @@ public class SinglyLinkedTest {
     }
     @Test
     public void testPrintListReversingly_Recursively(){
+        System.out.println("从尾到头反向打印单链表:");
         sl.printListReversingly_Recursively(sl.head);
     }
+
+    @Test
+    public void testDeleteNode() {
+        sl.deleteNode(sl.search(1));
+        System.out.println("删除头结点后的单链表:");
+        sl.printSinglyLinked();
+    }
+
+    @Test
+    public void testDeleteNode2() {
+        sl.deleteNode(sl.search(4));
+        System.out.println("删除尾结点后的单链表:");
+        sl.printSinglyLinked();
+    }
+
+    @Test
+    public void testDeleteNode3() {
+        sl.deleteNode(sl.search(4));
+        System.out.println("删除第二个结点后的单链表:");
+        sl.printSinglyLinked();
+    }
+
 }
