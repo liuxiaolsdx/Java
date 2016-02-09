@@ -82,5 +82,9 @@ public class PrintNumber {
     public static void main(String[] args) {
         print1ToMaxofNDigits(2);
         print1ToMaxofNDigits2(2);
+
+        //error test
+        //print1ToMaxofNDigits(-1);
+        //print1ToMaxofNDigits(0);
     }
 }
