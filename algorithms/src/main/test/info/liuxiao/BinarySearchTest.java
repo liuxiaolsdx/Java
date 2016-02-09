@@ -1,6 +1,5 @@
 package info.liuxiao;
 
-import info.liuxiao.BinarySearch;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

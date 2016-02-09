@@ -1,6 +1,5 @@
 package info.liuxiao;
 
-import info.liuxiao.SQueue;
 import org.junit.Before;
 import org.junit.Test;
 

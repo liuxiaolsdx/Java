@@ -1,6 +1,5 @@
 package info.liuxiao;
 
-import info.liuxiao.RotationArray;
 import org.junit.Assert;
 import org.junit.Test;
 
