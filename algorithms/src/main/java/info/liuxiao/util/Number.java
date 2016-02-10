@@ -3,7 +3,7 @@ package info.liuxiao.util;
 import org.jetbrains.annotations.Contract;
 
 /**
- * Some common operations about number.
+ * Some commons about number.
  * Created by Sean on 16/2/9.
  */
 public class Number {
