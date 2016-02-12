@@ -57,4 +57,13 @@ public class SinglyLinkedTest {
         sl.printSinglyLinked();
     }
 
+    @Test
+    public void testFindKthToTail() {
+        assertEquals(1, sl.findKthToTail(4).getData());
+        assertEquals(3, sl.findKthToTail(2).getData());
+        assertEquals(4, sl.findKthToTail(1).getData());
+        assertNull(sl.findKthToTail(5));
+        assertNull(sl.findKthToTail(10));
+    }
+
 }

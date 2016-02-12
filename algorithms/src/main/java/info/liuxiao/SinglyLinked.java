@@ -20,6 +20,10 @@ public class SinglyLinked<T> {
             this.data = data;
             this.next = next;
         }
+
+        public E getData() {
+            return data;
+        }
     }
 
     int size = 0;
@@ -198,4 +202,47 @@ public class SinglyLinked<T> {
 
     }
 
+    /**
+     * 题目15:链表中倒数第K个结点
+     * 输入一个链表,输出该链表中倒数第K个结点.为了符合大多数人到习惯,本题从1开始计数,即链表到尾结点是倒数第1个结点.
+     * 例如一个链表有6个几点,从头结点开始它们的值依次是1,2,3,4,5,6这个链表的倒数第3个结点是值为4的结点.
+     */
+    /**
+     * (无size成员变量,所以需要从头遍历整个链表先求出链表的大小n,然后再去求第n-k+1.时间复杂度最坏会到O(n^2))
+     * 如果采用两个指针,则只需遍历一次.
+     * 1. 指针1从头开始前进k-1,指针2在链表头保持不动.
+     * 2. 从第k步开始,第二个指针也开始从链表头开始遍历.
+     * 因为这两个指针的距离保持在k-1,当指针1到链表最后时,指针2指向的正好是这个链表的倒数第k个结点.
+     */
+    /**
+     * 注:此函数不用此类的部分成员变量和函数
+     * @param k 倒数第k个结点
+     */
+    public Node findKthToTail(int k) {
+        if (k < 1) {
+            throw new RuntimeException("K must more than 0!");
+        }
+
+        if (head == null) {
+            return null;
+        }
+
+        Node preIndex = head;
+        Node nextIndex = head;
+
+        for (int i = 0; i < k - 1; i++) {
+
+            preIndex = preIndex.next;
+            //如果k大于链表的长度,则抛出异常.
+            if (preIndex == null) {
+                //throw new RuntimeException("K is more than likedList size.");
+                return null;//for convenient test
+            }
+        }
+        while (preIndex.next != null) {
+            preIndex = preIndex.next;
+            nextIndex = nextIndex.next;
+        }
+        return nextIndex;
+    }
 }
