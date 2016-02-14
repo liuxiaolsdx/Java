@@ -66,4 +66,9 @@ public class SinglyLinkedTest {
         assertNull(sl.findKthToTail(10));
     }
 
+    @Test
+    public void testReverseList() {
+        sl.reverseList();
+        sl.printSinglyLinked();
+    }
 }

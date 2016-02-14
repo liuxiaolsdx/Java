@@ -249,5 +249,22 @@ public class SinglyLinked<T> {
     /**
      * 题目16: 反转链表
      * 定义一个函数,输入一个链表的头结点,反转该链表并输出反转后链表的头结点.
+     *
+     * 三个指针:
+     * left -> middle -> right
+     * left <- middle    right
      */
+    public void reverseList(){
+        Node<T> left = null;
+        Node<T> middle = head;
+        while (middle != null) {
+            Node<T> right = middle.next;//临时变量,存放转换链表的前一个结点
+            middle.next = left;//改变链表方向
+
+            //移动指针
+            left = middle;
+            middle = right;
+        }
+        head = left;
+    }
 }
