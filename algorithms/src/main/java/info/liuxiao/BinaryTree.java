@@ -187,6 +187,10 @@ public class BinaryTree {
         return root;
     }
 
+    /**
+     * 题目18: 树的子结构
+     * 输入两颗二叉树A和B,判断B是不是A的子结构.
+     */
 
     class Node {
 
