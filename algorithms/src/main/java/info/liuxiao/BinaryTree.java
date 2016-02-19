@@ -233,6 +233,8 @@ public class BinaryTree {
      * 题目19: 二叉树的镜像
      * 完成一个函数,输入一个二叉树,输出它的镜像.(根据照镜子的经验,得出它的镜像)
      */
+
+
     class Node {
 
         int key;
