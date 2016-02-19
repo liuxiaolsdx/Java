@@ -191,6 +191,44 @@ public class BinaryTree {
      * 题目18: 树的子结构
      * 输入两颗二叉树A和B,判断B是不是A的子结构.
      */
+    public boolean isEmpty() {
+        return root == null;
+    }
+    //第一步:在树中找到和subTree的根结点值一样的结点
+    public boolean hasSubtree(Node root1, Node root2) {
+        boolean result = false;
+        if (root1 != null && root2 != null) {
+            //第一步:在树中找到和subTree的根结点值一样的结点
+            if (root1.key == root2.key) {
+                result = hasSameTree(root1, root2);//第二步:判断以roo1为根结点的子树是不是包含和树B一样的结构
+            }
+
+            //再遍历此数的左右结点
+            if (!result) {
+                result = hasSubtree(root1.leftChild, root2);
+            }
+            if (!result) {
+                result = hasSubtree(root1.rightChild, root2);
+            }
+        }
+        return result;
+    }
+
+    //第二步:判断以roo1为根结点的子树是不是包含和树B一样的结构
+    private boolean hasSameTree(Node root1, Node root2) {
+        if (root2 == null) {
+            return true;
+        }
+        if (root1 == null) {
+            return false;
+        }
+        if (root1.key != root2.key) {
+            return false;
+        }
+
+        return hasSameTree(root1.leftChild, root2.leftChild) && hasSameTree(root1.rightChild, root2.rightChild);
+    }
+
     /**
      * 题目19: 二叉树的镜像
      * 完成一个函数,输入一个二叉树,输出它的镜像.(根据照镜子的经验,得出它的镜像)
