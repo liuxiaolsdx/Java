@@ -194,9 +194,17 @@ public class BinaryTree {
     public boolean isEmpty() {
         return root == null;
     }
-    //第一步:在树中找到和subTree的根结点值一样的结点
+
+    /**
+     * 先要遍历此树,寻找和树B的根结点值一样的结点R
+     * 然后判断以R为根结点的子树是否和树B具有一样的结构
+     * @param root1 Tree A node
+     * @param root2 Tree B node
+     * @return true: Tree A has Tree B
+     */
     public boolean hasSubtree(Node root1, Node root2) {
         boolean result = false;
+
         if (root1 != null && root2 != null) {
             //第一步:在树中找到和subTree的根结点值一样的结点
             if (root1.key == root2.key) {
@@ -211,10 +219,10 @@ public class BinaryTree {
                 result = hasSubtree(root1.rightChild, root2);
             }
         }
+
         return result;
     }
 
-    //第二步:判断以roo1为根结点的子树是不是包含和树B一样的结构
     private boolean hasSameTree(Node root1, Node root2) {
         if (root2 == null) {
             return true;
