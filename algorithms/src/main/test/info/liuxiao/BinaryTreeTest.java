@@ -13,6 +13,8 @@ public class BinaryTreeTest {
     private BinaryTree subBinaryTree = new BinaryTree();
     private BinaryTree subBinaryTree2 = new BinaryTree();
 
+    private BinaryTree mirrorTestTree = new BinaryTree();
+
     @Before
     public void setUp() {
         binaryTree.addNode(30, "root");
@@ -30,6 +32,14 @@ public class BinaryTreeTest {
         subBinaryTree2.addNode(15, "python");
         subBinaryTree2.addNode(85, "scala");
 
+        mirrorTestTree.addNode(8);
+        mirrorTestTree.addNode(6);
+        mirrorTestTree.addNode(10);
+        mirrorTestTree.addNode(5);
+        mirrorTestTree.addNode(7);
+        mirrorTestTree.addNode(9);
+        mirrorTestTree.addNode(11);
+
     }
 
     @Test
@@ -39,5 +49,13 @@ public class BinaryTreeTest {
         Assert.assertFalse(binaryTree.hasSubtree(binaryTree.root, null));
         Assert.assertFalse(binaryTree.hasSubtree(null, subBinaryTree.root));
         Assert.assertFalse(binaryTree.hasSubtree(null, null));
+    }
+
+    @Test
+    public void testMirrorRecursively() {
+        mirrorTestTree.preorderTreeWalk(mirrorTestTree.root);//8 6 5 7 10 9 11
+        mirrorTestTree.mirrorRecursively();
+        System.out.println("镜像二叉树为:");
+        mirrorTestTree.preorderTreeWalk(mirrorTestTree.root);//8 10 11 9 6 7 5
     }
 }

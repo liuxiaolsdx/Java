@@ -10,6 +10,10 @@ public class BinaryTree {
 
     Node root;
 
+    public void addNode(int key) {
+        this.addNode(key, null);
+    }
+
     /**
      * Build a binary search tree.
      *
@@ -241,6 +245,30 @@ public class BinaryTree {
      * 题目19: 二叉树的镜像
      * 完成一个函数,输入一个二叉树,输出它的镜像.(根据照镜子的经验,得出它的镜像)
      */
+    public BinaryTree mirrorRecursively() {
+        mirrorRecursively(root);
+        return this;
+    }
+
+    private void mirrorRecursively(Node node) {
+        if (node == null) {
+            return;
+        }
+        if (node.leftChild == null && node.rightChild == null) {
+            return;
+        }
+
+        Node temp = node.leftChild;
+        node.leftChild = node.rightChild;
+        node.rightChild = temp;
+
+        if (node.leftChild != null) {
+            mirrorRecursively(node.leftChild);
+        }
+        if (node.rightChild != null) {
+            mirrorRecursively(node.rightChild);
+        }
+    }
 
 
     class Node {
