@@ -1,13 +1,12 @@
 package info.liuxiao.problems;
 
-import java.util.Comparator;
 import java.util.Stack;
 
 /**
  * StackWithMin
  * Created by Sean on 16/2/23.
  */
-public class StackWithMin<T extends Comparator<T>> {
+public class StackWithMin<T extends Comparable<T>> {
     /**
      * 题目21: 包含min函数的栈
      * 定义栈的数据结构,请在该类型中实现一个能够得到栈的最小元素的min函数.
@@ -25,6 +24,24 @@ public class StackWithMin<T extends Comparator<T>> {
     public StackWithMin() {
         dataStack = new Stack<>();
         minStack = new Stack<>();
+    }
+
+    public void push(T data) {
+        dataStack.push(data);
+        if (minStack.size() == 0 || data.compareTo(minStack.peek()) < 0) {
+            minStack.push(data);
+        } else {
+            minStack.push(minStack.peek());
+        }
+    }
+
+    public T pop() {
+        minStack.pop();
+        return dataStack.pop();
+    }
+
+    public T min() {
+        return minStack.peek();
     }
 
 }
