@@ -1,13 +1,14 @@
 package info.liuxiao.crawler.frontier;
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 存放已经访问了的url
  * Created by Sean on 16/2/25.
  */
 public class OutUrlQueues {
-    private static HashSet<String> outQueues = new HashSet<>();
+    private static Set<String> outQueues = new HashSet<>();
     //被static修饰的成员变量和成员方法独立于该类的任何对象。也就是说，它不依赖类特定的实例，被类的所有实例共享。
 
     public static void add(String url) {

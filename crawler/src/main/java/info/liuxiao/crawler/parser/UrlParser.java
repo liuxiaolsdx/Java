@@ -1,7 +1,7 @@
 package info.liuxiao.crawler.parser;
 
 import info.liuxiao.crawler.frontier.OutUrlQueues;
-import info.liuxiao.crawler.frontier.WaitingUrkQueues;
+import info.liuxiao.crawler.frontier.WaitingUrlQueues;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -24,14 +24,14 @@ public class UrlParser {
             links.forEach((l) -> {
                 String absUrl = l.absUrl("href");//获得完整连接
                 if (!OutUrlQueues.contains(absUrl) && absUrl.startsWith(url)) {
-                    WaitingUrkQueues.add(absUrl);
+                    WaitingUrlQueues.add(absUrl);
                 }
             });
         } else if (!links.isEmpty() && !isVerticalCrawler) {
             links.forEach((l) -> {
                 String absUrl = l.absUrl("href");
                 if (!OutUrlQueues.contains(absUrl) && absUrl.startsWith("http")) {
-                    WaitingUrkQueues.add(absUrl);
+                    WaitingUrlQueues.add(absUrl);
                 }
             });
         }
