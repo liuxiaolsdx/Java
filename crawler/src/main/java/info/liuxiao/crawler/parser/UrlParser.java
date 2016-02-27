@@ -11,7 +11,7 @@ import org.jsoup.select.Elements;
  * Created by Sean on 16/2/25.
  */
 public class UrlParser {
-    public void getUrl(String url, String content, Boolean isVerticalCrawler) {
+    public  static void getUrl(String url, String content, Boolean isVerticalCrawler) {
         if (url == null || content == null || url.isEmpty()) {
             throw new IllegalArgumentException("Invalid input!");
         }
