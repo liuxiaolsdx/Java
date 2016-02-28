@@ -45,7 +45,7 @@ public class WebCrawler implements Runnable{
     }
 
     private void downloadPage(PageFetchResult result) {
-        String[] urlName = url.split("/");
+        String[] urlName = result.getUrl().split("/");
         String fileName = urlName[urlName.length - 1] + ".html";
         File storageFolder = new File(this.storageFolder);
 
