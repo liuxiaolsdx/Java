@@ -1,5 +1,7 @@
 package info.liuxiao.problems;
 
+import java.util.Stack;
+
 /**
  * StackPushPopOrder
  * Created by Sean on 16/2/24.
@@ -12,7 +14,40 @@ public class StackPushPopOrder {
      * 但4,3,5,1,2就不可能是该压栈序列的弹出序列.
      */
 
-    public static boolean isPopOrder(int[] org1, int[] pop1) {
-        return false;
+    /**
+     * 遍历第二个序列,设当前值为pop, pop的值要么为第一序列的栈顶,要么在未压入栈的序列中.
+     * 否则返回false.
+     * @param org 压入栈的序列
+     * @param pop 需要判断的栈
+     * @return true: yes
+     */
+    public static boolean isPopOrder(int[] org, int[] pop) {
+        boolean isPopOrder = false;
+
+        if (org != null && pop != null) {
+
+            Stack<Integer> stack = new Stack<>();
+            int i = 0;
+            int j = 0;
+
+            for(; i < pop.length; i++) {
+                while (stack.isEmpty() || pop[i] != stack.peek()) {
+                    if (j == org.length) {
+                        break;
+                    }
+                    stack.push(org[j]);
+                    j++;
+                }
+                //此if用于判断内循环是由j == org.length退出还是pop[i] == stack.peek()退出
+                if (pop[i] != stack.peek()) {
+                    break;
+                }
+                stack.pop();//说明栈顶值和pop[i]相等,抛掉此值(即这两个值互相消除),并继续遍历pop序列下一个
+            }
+            if (i == pop.length && stack.isEmpty()) {
+                isPopOrder = true;
+            }
+        }
+        return isPopOrder;
     }
 }
