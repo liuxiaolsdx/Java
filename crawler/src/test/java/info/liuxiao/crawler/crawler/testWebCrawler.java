@@ -1,7 +1,7 @@
 package info.liuxiao.crawler.crawler;
 
 /**
- * test crawler
+ * crawler demo
  * Created by Sean on 16/2/27.
  */
 public class testWebCrawler {
