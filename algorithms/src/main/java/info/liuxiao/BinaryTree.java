@@ -2,6 +2,9 @@ package info.liuxiao;
 
 import com.sun.istack.internal.NotNull;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * BinaryTree
  * Created by Sean on 16/1/1.
@@ -273,8 +276,28 @@ public class BinaryTree {
     /**
      * 题目23:从上往下打印二叉树
      * 从上往下打印出二叉树的每个结点,同一层的结点按照从左到右的顺序打印.
-     *
      */
+    /**
+     * 此题可用BFS考虑.
+     */
+    public void printFromTopToBottom() {
+        if (root == null) {
+            return;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        Node temp;
+        while (!queue.isEmpty()) {
+            temp = queue.remove();
+            System.out.println(temp);
+            if (temp.leftChild != null) {
+                queue.add(temp.leftChild);
+            }
+            if (temp.rightChild != null) {
+                queue.add(temp.rightChild);
+            }
+        }
+    }
 
 
     class Node {
@@ -339,6 +362,10 @@ public class BinaryTree {
             System.out.println("Test unmatched arguments success!");
         }
         tree2.postorederTreewalk(tree3.root);
+
+        System.out.println();
+        System.out.println("printFromTopToBottom");
+        tree.printFromTopToBottom();
 
     }
 }
