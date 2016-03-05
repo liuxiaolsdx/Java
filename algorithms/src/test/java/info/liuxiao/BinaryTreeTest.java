@@ -58,4 +58,19 @@ public class BinaryTreeTest {
         System.out.println("镜像二叉树为:");
         mirrorTestTree.preorderTreeWalk(mirrorTestTree.root);//8 10 11 9 6 7 5
     }
+
+    @Test
+    public void testVerifySequenceOfBST() {
+        int[] sequence1 = {5, 7, 6, 9, 11, 10, 8};
+        int[] sequence2 = {5, 6, 7};
+        int[] sequence3 = {7, 8, 9};
+        int[] sequence4 = {5};
+        int[] sequence5 = {7, 4, 6, 5};
+
+        Assert.assertTrue(BinaryTree.VerifySequenceOfBST(sequence1));
+        Assert.assertTrue(BinaryTree.VerifySequenceOfBST(sequence2));
+        Assert.assertTrue(BinaryTree.VerifySequenceOfBST(sequence3));
+        Assert.assertTrue(BinaryTree.VerifySequenceOfBST(sequence4));
+        Assert.assertFalse(BinaryTree.VerifySequenceOfBST(sequence5));
+    }
 }

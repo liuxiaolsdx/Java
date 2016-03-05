@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * BinaryTree
+ * Binary Search Tree
  * Created by Sean on 16/1/1.
  */
 public class BinaryTree {
@@ -299,7 +299,51 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * 题目24: 二叉搜索树的后序遍历序列
+     * 输入一个整数数组,判断该数组是不是某二叉搜索树的后序遍历的结果.
+     * 如果是则返回true,否则返回false.假设输入的数组的任意两个数字都不相同.
+     */
+    public static boolean VerifySequenceOfBST(int[] sequence) {
+        if (sequence == null || sequence.length <= 0) {
+            return false;
+        }
+        return VerifySequenceOfBST(sequence, 0, sequence.length - 1);
+    }
+    /**
+     * 序列最后一位肯定是此树的根,序列前面分为两部分:左子树和右子树
+     * @param sequence 判断的序列
+     * @param left 左下标
+     * @param right 右下标
+     * @return true: yes型
+     */
+    private static boolean VerifySequenceOfBST(int[] sequence, int left, int right) {
+        if (left >= right) {
+            return true;
+        }
 
+        int root = sequence[right];
+
+        //取出序列中小于根结点的数
+        int index = left;
+        while (sequence[index] < root) {
+            index++;//index为右子树开始的下标
+        }
+
+        int j = index;
+        for (; j < right; j++) {
+            if (sequence[j] < root) {
+                return false;
+            }
+        }
+
+        //判断包含左/右子树的数组是不是二叉树的后序遍历序列
+         return VerifySequenceOfBST(sequence, left, index - 1) && VerifySequenceOfBST(sequence, index, right - 1);
+    }
+
+    /**
+     * 结点类
+     */
     class Node {
 
         int key;
