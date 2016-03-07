@@ -73,4 +73,30 @@ public class BinaryTreeTest {
         Assert.assertTrue(BinaryTree.VerifySequenceOfBST(sequence4));
         Assert.assertFalse(BinaryTree.VerifySequenceOfBST(sequence5));
     }
+
+    @Test
+    public void testFindPath() {
+        BinaryTree tree = new BinaryTree();
+        tree.addNode(10);
+        tree.addNode(5);
+        tree.addNode(12);
+        tree.addNode(4);
+        tree.addNode(7);
+        BinaryTree tree2 = new BinaryTree();
+        tree2.addNode(10);
+        tree2.addNode(7);
+        tree2.addNode(6);
+        tree2.addNode(5);
+        tree2.addNode(3);
+
+        System.out.println("Find path 19");
+        tree.findPath(19);//10 5 4
+        System.out.println("Find path 22");
+        tree.findPath(22);//10 5 7; 10 12
+        System.out.println("Find path 23");
+        tree.findPath(23);
+
+        System.out.println("Find path 28");
+        tree2.findPath(28);
+    }
 }

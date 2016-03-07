@@ -3,7 +3,9 @@ package info.liuxiao;
 import com.sun.istack.internal.NotNull;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Binary Search Tree
@@ -300,6 +302,37 @@ public class BinaryTree {
     }
 
     /**
+     * 题目25: 二叉树中和为某一值的路径
+     * 输入一颗二叉树和一个整数,打印出二叉树中结点值的和为输入整数的所有路径.
+     * 从树的根结点开始往下一直到叶结点所经过的结点形成一条路径.
+     */
+    /**
+     * 可以用DFS考虑.
+     */
+    public void findPath(int sum) {
+        if (root != null) {
+            List<Node> nodeList = new LinkedList<>();//因为要打印路径,所以此处用list模拟栈
+            findPath(root, sum, 0, nodeList);
+        }
+    }
+
+    private void findPath(Node focusNode, int sum, int currentSum, List<Node> nodeList) {
+        if (focusNode != null) {
+            currentSum += focusNode.key;
+            nodeList.add(focusNode);
+
+            if (currentSum == sum) {
+                System.out.println(nodeList);
+            } else {
+                findPath(focusNode.leftChild, sum, currentSum, nodeList);
+                findPath(focusNode.rightChild, sum, currentSum, nodeList);
+            }
+
+            nodeList.remove(nodeList.size() - 1);
+        }
+    }
+
+    /**
      * 题目24: 二叉搜索树的后序遍历序列
      * 输入一个整数数组,判断该数组是不是某二叉搜索树的后序遍历的结果.
      * 如果是则返回true,否则返回false.假设输入的数组的任意两个数字都不相同.
@@ -362,7 +395,7 @@ public class BinaryTree {
         }
 
         public String toString() {
-            return value + " has the key " + key;
+            return "(" + key + "," + value + ")";
         }
     }
 
