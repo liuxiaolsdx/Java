@@ -3,7 +3,7 @@ package info.liuxiao;
 /**
  * sleep()睡眠时,会保持对象锁
  * wait()睡眠时,会释放对象锁.
- * wiat()必须放在synchronized block中，否则会在program runtime时扔出”java.lang.IllegalMonitorStateException“异常。
+ * wait()必须放在synchronized block中，否则会在program runtime时扔出”java.lang.IllegalMonitorStateException“异常。
  * Created by Sean on 16/3/6.
  */
 public class ThreadTest implements Runnable{
