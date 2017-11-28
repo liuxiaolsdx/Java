@@ -1,4 +1,4 @@
-package info.liuxiao;
+package info.liuxiao.concurrent;
 
 /**
  * sleep()睡眠时,会保持对象锁
