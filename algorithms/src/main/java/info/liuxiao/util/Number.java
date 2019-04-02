@@ -6,7 +6,7 @@ package info.liuxiao.util;
  */
 public class Number {
     /**
-     * 将数组中,坐标为a和b的数交换
+     * 将数组中,坐标为a和b的数交换.
      *
      * @param arr Array
      * @param a   index a
