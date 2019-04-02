@@ -1,7 +1,5 @@
 package info.liuxiao.util;
 
-import org.jetbrains.annotations.Contract;
-
 /**
  * Some commons about number.
  * Created by Sean on 16/2/9.
@@ -24,7 +22,6 @@ public class Number {
      *
      * @param arr Array
      */
-    @Contract("null -> fail")
     public static void printArray(int[] arr) {
         if (arr == null) {
             throw new RuntimeException("Invalid Input!");
