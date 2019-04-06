@@ -1,4 +1,4 @@
-package info.liuxiao;
+package info.liuxiao.search;
 
 import com.sun.istack.internal.NotNull;
 

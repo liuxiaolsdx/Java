@@ -1,4 +1,4 @@
-package info.liuxiao;
+package info.liuxiao.sort;
 
 public class MergeSort {
 
